@@ -1,0 +1,83 @@
+// Design tokens. Components read these as CSS custom properties, so both
+// themes switch at runtime without recompiling component styles.
+
+@mixin dark-theme {
+  color-scheme: dark;
+  --ink: #e5ebef;
+  --ink-2: #c3ccd4;
+  --muted: #97a3ad;
+  --paper: #0f1519;
+  --surface: #161e23;
+  --surface-2: #1c262c;
+  --rule: #28343b;
+  --rule-strong: #3a4952;
+  --accent: #5cc2a2;
+  --accent-hover: #7ad3b6;
+  --accent-ink: #06231a;
+  --accent-soft: #173229;
+  --ledger: #e07a62;
+  --topbar-bg: #0a0f12;
+  --topbar-ink: #aab6bf;
+  --focus: #7db4ee;
+  --st-new: #8bb8ee;
+  --st-new-bg: #172a40;
+  --st-contacted: #e8c170;
+  --st-contacted-bg: #33290f;
+  --st-proposal: #c3a6ee;
+  --st-proposal-bg: #2a2140;
+  --st-converted: #5cc2a2;
+  --st-converted-bg: #173229;
+  --st-closed: #97a3ad;
+  --st-closed-bg: #232b30;
+  --danger: #f08b82;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+:root {
+  --ink: #13233a;
+  --ink-2: #33445a;
+  --muted: #5d6973;
+  --paper: #f5f7f4;
+  --surface: #ffffff;
+  --surface-2: #eef2ee;
+  --rule: #d6ddd5;
+  --rule-strong: #b9c4b8;
+  --accent: #1d6a56;
+  --accent-hover: #155443;
+  --accent-ink: #ffffff;
+  --accent-soft: #e2efe9;
+  --ledger: #b2452f; // the red margin rule of a ledger page
+  --topbar-bg: #13233a;
+  --topbar-ink: #d7e0e8;
+  --focus: #2f7fd1;
+
+  --st-new: #2463b0;
+  --st-new-bg: #e5eef9;
+  --st-contacted: #8a5a00;
+  --st-contacted-bg: #fbf0d9;
+  --st-proposal: #6b46a8;
+  --st-proposal-bg: #efe8f8;
+  --st-converted: #1d6a56;
+  --st-converted-bg: #e2efe9;
+  --st-closed: #5d6973;
+  --st-closed-bg: #eceeef;
+  --danger: #b3261e;
+
+  --font-display: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+  --font-text: 'Public Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'Cascadia Mono', Consolas, monospace;
+
+  --radius: 6px;
+  --shadow: 0 1px 2px rgba(19, 35, 58, 0.06), 0 8px 24px rgba(19, 35, 58, 0.07);
+  --header-offset: 96px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include dark-theme;
+  }
+}
+
+:root[data-theme='dark'] {
+  @include dark-theme;
+}

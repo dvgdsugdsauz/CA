@@ -1,0 +1,33 @@
+.pill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+
+  &[data-status='NEW'] {
+    color: var(--st-new);
+    background: var(--st-new-bg);
+  }
+
+  &[data-status='CONTACTED'] {
+    color: var(--st-contacted);
+    background: var(--st-contacted-bg);
+  }
+
+  &[data-status='PROPOSAL_SENT'] {
+    color: var(--st-proposal);
+    background: var(--st-proposal-bg);
+  }
+
+  &[data-status='CONVERTED'] {
+    color: var(--st-converted);
+    background: var(--st-converted-bg);
+  }
+
+  &[data-status='CLOSED'] {
+    color: var(--st-closed);
+    background: var(--st-closed-bg);
+  }
+}

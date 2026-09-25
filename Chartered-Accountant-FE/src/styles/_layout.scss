@@ -1,0 +1,84 @@
+@use 'breakpoints' as bp;
+
+.wrap {
+  width: 100%;
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.eyebrow {
+  font: 600 0.74rem/1.2 var(--font-text);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+// Page sections. Applied to section component hosts, so `.band + .band` still
+// sees them as siblings.
+.band {
+  display: block;
+  padding-block: 72px;
+}
+
+.band + .band {
+  border-top: 1px solid var(--rule);
+}
+
+.band-alt {
+  background: var(--surface);
+}
+
+.section-head {
+  display: grid;
+  gap: 10px;
+  max-width: 680px;
+  margin-bottom: 36px;
+
+  p {
+    color: var(--muted);
+  }
+
+  &.split {
+    max-width: none;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+}
+
+.link-more {
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &::after {
+    content: ' \2192';
+  }
+}
+
+// Form card on the left, office details on the right (home and contact).
+.enquire-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+@media (max-width: bp.$tablet) {
+  .enquire-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: bp.$nav) {
+  .section-head.split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: bp.$phone) {
+  .band {
+    padding-block: 52px;
+  }
+}

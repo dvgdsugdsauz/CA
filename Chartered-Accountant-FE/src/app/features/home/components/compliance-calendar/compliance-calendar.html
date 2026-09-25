@@ -1,0 +1,26 @@
+<aside class="ledger" aria-labelledby="ledger-title">
+  <div class="ledger-head">
+    <h2 id="ledger-title">Due dates ahead</h2>
+    <span class="mono">as of {{ today | date: 'd MMM y' }}</span>
+  </div>
+  <ol class="ledger-list">
+    @for (row of deadlines(); track row.deadlineId) {
+      <li class="ledger-row" [class.is-soon]="row.dueSoon">
+        <time class="ledger-date" [attr.datetime]="row.dueDate">
+          <b>{{ row.day }}</b>
+          <span>{{ row.month }}</span>
+        </time>
+        <div class="ledger-item">
+          <strong>{{ row.title }}</strong>
+          <span class="ledger-meta">
+            <span class="tag">{{ row.lawLabel }}</span>
+            @if (row.appliesTo) {
+              <span>{{ row.appliesTo }}</span>
+            }
+          </span>
+        </div>
+      </li>
+    }
+  </ol>
+  <p class="ledger-foot">Indicative dates. Confirm on the GST, Income-tax and MCA portals.</p>
+</aside>

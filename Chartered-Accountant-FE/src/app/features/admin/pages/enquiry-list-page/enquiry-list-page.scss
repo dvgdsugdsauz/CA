@@ -1,0 +1,41 @@
+.page-intro {
+  margin-bottom: 0;
+
+  h1 {
+    font-size: 1.8rem;
+  }
+}
+
+.search {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  input {
+    flex: 1 1 280px;
+    max-width: 420px;
+    padding: 8px 12px;
+    border: 1px solid var(--rule-strong);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.9rem;
+  }
+}
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+
+  span {
+    margin-right: auto;
+  }
+}
+
+.retry {
+  margin-left: 12px;
+}

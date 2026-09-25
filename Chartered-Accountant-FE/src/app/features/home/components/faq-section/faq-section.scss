@@ -1,0 +1,14 @@
+@use 'styles/breakpoints' as bp;
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 56px;
+}
+
+@media (max-width: bp.$tablet) {
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}

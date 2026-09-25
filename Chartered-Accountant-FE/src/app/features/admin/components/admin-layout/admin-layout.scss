@@ -1,0 +1,45 @@
+.admin-bar {
+  background: var(--topbar-bg);
+  color: #fff;
+
+  .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 16px;
+    padding-block: 12px;
+  }
+
+  strong {
+    margin-right: auto;
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+  }
+
+  a,
+  button,
+  span {
+    color: var(--topbar-ink);
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  a:hover,
+  button:hover {
+    color: #fff;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+.admin-main {
+  display: grid;
+  gap: 24px;
+  padding-block: 32px 64px;
+}

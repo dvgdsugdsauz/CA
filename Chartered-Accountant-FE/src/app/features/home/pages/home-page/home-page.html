@@ -1,0 +1,27 @@
+@if (office(); as office) {
+  <app-home-hero [office]="office" [deadlines]="deadlines()" />
+}
+
+<app-service-overview class="band band-alt" [services]="services()" [city]="office()?.city" />
+
+@if (industries().length) {
+  <app-industry-list class="band" [industries]="industries()" />
+}
+
+<app-why-us class="band band-alt" />
+
+@if (testimonials().length) {
+  <app-testimonial-list class="band" [testimonials]="testimonials()" />
+}
+
+@if (articles().length) {
+  <app-latest-articles class="band band-alt" [articles]="articles()" />
+}
+
+@if (faqs().length) {
+  <app-faq-section class="band" [faqs]="faqs()" [office]="office()" />
+}
+
+@if (office(); as office) {
+  <app-enquiry-section class="band band-alt" id="enquire" [office]="office" />
+}

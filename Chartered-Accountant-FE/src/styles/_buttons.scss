@@ -1,0 +1,47 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  font: 600 0.95rem/1 var(--font-text);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: progress;
+  }
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+
+  &:hover {
+    background: var(--accent-hover);
+    color: var(--accent-ink);
+  }
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule-strong);
+
+  &:hover {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+}
+
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}

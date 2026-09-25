@@ -1,0 +1,46 @@
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <app-brand class="footer-brand" [inverse]="true" />
+        <p>{{ firm.tagline }}</p>
+        <app-newsletter-signup />
+      </div>
+
+      <div>
+        <h2>Services</h2>
+        <ul>
+          @for (service of services(); track service.serviceId) {
+            <li><a [routerLink]="['/services', service.slug]">{{ service.title }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2>Firm</h2>
+        <ul>
+          @for (link of firmLinks; track link.path) {
+            <li><a [routerLink]="link.path">{{ link.label }}</a></li>
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h2>Offices</h2>
+        <ul>
+          @for (office of offices(); track office.locationId) {
+            <li>
+              <strong>{{ office.city }}</strong><br />
+              {{ office.addressLine }}
+            </li>
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ year }} {{ firm.name }}, {{ firm.descriptor }}</span>
+      <span class="mono">{{ firm.registration }}</span>
+    </div>
+  </div>
+</footer>

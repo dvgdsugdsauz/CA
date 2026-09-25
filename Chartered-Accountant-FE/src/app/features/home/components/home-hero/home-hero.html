@@ -1,0 +1,29 @@
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Chartered Accountants · {{ office().city }}</span>
+      <h1>{{ office().heroHeading }}</h1>
+      <p class="lede">{{ office().intro }}</p>
+
+      @if (office().areasServed.length) {
+        <div>
+          <p class="areas-label" id="areas-label">Serving clients in</p>
+          <ul class="areas" aria-labelledby="areas-label">
+            @for (area of office().areasServed; track area) {
+              <li class="chip">{{ area }}</li>
+            }
+          </ul>
+        </div>
+      }
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" [routerLink]="[]" fragment="enquire">Book a consultation</a>
+        <a class="btn btn-ghost" routerLink="/services">View services</a>
+      </div>
+    </div>
+
+    @if (deadlines().length) {
+      <app-compliance-calendar [deadlines]="deadlines()" />
+    }
+  </div>
+</section>

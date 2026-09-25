@@ -1,0 +1,92 @@
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+  <div class="form-grid" [class.stacked]="variant() === 'compact'">
+    <div class="field">
+      <label [attr.for]="id + '-name'">Name</label>
+      <input
+        [id]="id + '-name'"
+        formControlName="fullName"
+        autocomplete="name"
+        [class.is-invalid]="showError('fullName')"
+        [attr.aria-invalid]="showError('fullName')"
+        [attr.aria-describedby]="showError('fullName') ? id + '-name-error' : null"
+      />
+      @if (showError('fullName')) {
+        <span class="error" [id]="id + '-name-error'">{{ errorFor('fullName') }}</span>
+      }
+    </div>
+
+    <div class="field">
+      <label [attr.for]="id + '-phone'">Phone</label>
+      <input
+        [id]="id + '-phone'"
+        formControlName="phone"
+        type="tel"
+        autocomplete="tel"
+        [class.is-invalid]="showError('phone')"
+        [attr.aria-invalid]="showError('phone')"
+        [attr.aria-describedby]="showError('phone') ? id + '-phone-error' : null"
+      />
+      @if (showError('phone')) {
+        <span class="error" [id]="id + '-phone-error'">{{ errorFor('phone') }}</span>
+      }
+    </div>
+
+    <div class="field">
+      <label [attr.for]="id + '-email'">Email</label>
+      <input
+        [id]="id + '-email'"
+        formControlName="email"
+        type="email"
+        autocomplete="email"
+        [class.is-invalid]="showError('email')"
+        [attr.aria-invalid]="showError('email')"
+        [attr.aria-describedby]="showError('email') ? id + '-email-error' : null"
+      />
+      @if (showError('email')) {
+        <span class="error" [id]="id + '-email-error'">{{ errorFor('email') }}</span>
+      }
+    </div>
+
+    @if (variant() === 'full') {
+      <div class="field">
+        <label [attr.for]="id + '-company'">Company <span class="hint">(optional)</span></label>
+        <input [id]="id + '-company'" formControlName="companyName" autocomplete="organization" />
+      </div>
+    }
+
+    <div class="field" [class.full]="variant() === 'full'">
+      <label [attr.for]="id + '-service'">
+        {{ variant() === 'full' ? 'What do you need help with?' : 'Service' }}
+      </label>
+      <select [id]="id + '-service'" formControlName="serviceId">
+        <option [ngValue]="null">Not sure yet</option>
+        @for (service of services(); track service.id) {
+          <option [ngValue]="service.id">{{ service.name }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="field full">
+      <label [attr.for]="id + '-message'">Message <span class="hint">(optional)</span></label>
+      <textarea
+        [id]="id + '-message'"
+        formControlName="message"
+        [rows]="variant() === 'full' ? 4 : 3"
+        placeholder="Turnover, entity type, deadlines you are working to..."
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <button class="btn btn-primary" type="submit" [disabled]="sending()">
+      {{ sending() ? 'Sending...' : 'Send enquiry' }}
+    </button>
+    @if (note()) {
+      <small>{{ note() }}</small>
+    }
+  </div>
+
+  @if (failure()) {
+    <div class="alert alert-error form-alert" role="alert">{{ failure() }}</div>
+  }
+</form>

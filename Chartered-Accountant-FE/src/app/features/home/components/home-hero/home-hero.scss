@@ -1,0 +1,50 @@
+@use 'styles/breakpoints' as bp;
+
+.hero {
+  padding-block: 64px 72px;
+
+  .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: start;
+  }
+}
+
+.hero-copy {
+  display: grid;
+  gap: 22px;
+}
+
+.lede {
+  font-size: 1.12rem;
+  color: var(--ink-2);
+  max-width: 58ch;
+}
+
+.areas-label {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: bp.$tablet) {
+  .hero .wrap {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}

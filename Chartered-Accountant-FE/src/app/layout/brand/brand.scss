@@ -1,0 +1,54 @@
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink);
+
+  &:hover {
+    color: var(--ink);
+  }
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  font: 700 1.05rem/1 var(--font-display);
+  letter-spacing: -0.02em;
+  box-shadow: inset 0 -4px 0 var(--accent-soft);
+}
+
+.brand-name {
+  display: block;
+  font: 650 1.12rem/1.1 var(--font-display);
+}
+
+.brand-sub {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.inverse {
+  &,
+  &:hover {
+    color: #fff;
+  }
+
+  .brand-mark {
+    border-color: #fff;
+    box-shadow: none;
+  }
+
+  .brand-sub {
+    color: var(--topbar-ink);
+  }
+}

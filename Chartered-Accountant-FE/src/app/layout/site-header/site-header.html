@@ -1,0 +1,22 @@
+<header class="site-header">
+  <div class="wrap">
+    <app-brand class="brand-slot" />
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-controls="site-nav"
+      [attr.aria-expanded]="menuOpen()"
+      (click)="toggleMenu()"
+    >
+      Menu
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main" [class.is-open]="menuOpen()">
+      @for (item of nav; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active" ariaCurrentWhenActive="page">
+          {{ item.label }}
+        </a>
+      }
+    </nav>
+    <a class="btn btn-primary btn-sm header-cta" routerLink="/contact">Enquire now</a>
+  </div>
+</header>

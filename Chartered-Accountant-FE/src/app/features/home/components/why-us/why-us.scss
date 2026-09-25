@@ -1,0 +1,25 @@
+@use 'styles/breakpoints' as bp;
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 40px;
+}
+
+.why-item {
+  display: grid;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+
+  p {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: bp.$nav) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,101 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: var(--header-offset);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 16px/1.6 var(--font-text);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  line-height: 1.18;
+  text-wrap: balance;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 1.3rem + 2.6vw, 3.1rem);
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+h2 {
+  font-size: clamp(1.55rem, 1.2rem + 1.2vw, 2.1rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

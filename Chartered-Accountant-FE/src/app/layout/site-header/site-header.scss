@@ -1,0 +1,85 @@
+@use 'styles/breakpoints' as bp;
+
+:host {
+  display: contents;
+}
+
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: color-mix(in srgb, var(--surface) 94%, transparent);
+  backdrop-filter: saturate(1.4) blur(8px);
+  border-bottom: 1px solid var(--rule);
+
+  .wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding-block: 14px;
+  }
+}
+
+.brand-slot {
+  margin-right: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  a {
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    color: var(--ink-2);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.94rem;
+
+    &:hover,
+    &.active {
+      color: var(--ink);
+      background: var(--surface-2);
+    }
+  }
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--rule-strong);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  font: 600 0.85rem var(--font-text);
+  cursor: pointer;
+}
+
+@media (max-width: bp.$nav) {
+  .nav-toggle {
+    display: inline-block;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px 20px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--rule);
+
+    &.is-open {
+      display: flex;
+    }
+  }
+
+  .header-cta {
+    display: none;
+  }
+}

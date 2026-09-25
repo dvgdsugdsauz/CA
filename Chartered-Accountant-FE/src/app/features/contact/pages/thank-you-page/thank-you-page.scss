@@ -1,0 +1,23 @@
+.thanks {
+  max-width: 640px;
+  display: grid;
+  gap: 18px;
+  padding-block: 80px;
+}
+
+.ref-box {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 12px 18px;
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius);
+  font: 500 1.2rem var(--font-mono);
+  color: var(--ink);
+  background: var(--accent-soft);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

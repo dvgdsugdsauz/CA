@@ -1,0 +1,42 @@
+@use 'styles/breakpoints' as bp;
+
+:host {
+  display: block;
+  background: var(--topbar-bg);
+  color: var(--topbar-ink);
+  font-size: 0.82rem;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
+  justify-content: space-between;
+  padding-block: 8px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.topbar-contact,
+.topbar-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+}
+
+.registration {
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: bp.$phone) {
+  .topbar-meta {
+    display: none;
+  }
+}

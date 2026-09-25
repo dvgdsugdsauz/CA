@@ -1,0 +1,61 @@
+<div class="table-wrap">
+  <table class="data">
+    <thead>
+      <tr>
+        <th scope="col">Reference</th>
+        <th scope="col">Received</th>
+        <th scope="col">Contact</th>
+        <th scope="col">Service</th>
+        <th scope="col">Message</th>
+        <th scope="col">Status</th>
+        <th scope="col">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (enquiry of enquiries(); track enquiry.enquiryId) {
+        <tr>
+          <td class="mono">{{ enquiry.referenceNo }}</td>
+          <td class="mono">
+            <time [attr.datetime]="enquiry.createdAt">{{ enquiry.createdAt | date: 'd MMM, HH:mm' }}</time>
+          </td>
+          <td>
+            <strong>{{ enquiry.fullName }}</strong>
+            @if (enquiry.companyName) {
+              <span class="sub">{{ enquiry.companyName }}</span>
+            }
+            <span class="sub"><a [href]="'tel:' + enquiry.phone">{{ enquiry.phone }}</a></span>
+            <span class="sub"><a [href]="'mailto:' + enquiry.email">{{ enquiry.email }}</a></span>
+          </td>
+          <td>
+            {{ enquiry.serviceTitle ?? 'General' }}
+            @if (enquiry.city) {
+              <span class="sub">{{ enquiry.city }}</span>
+            }
+          </td>
+          <td>{{ enquiry.message }}</td>
+          <td><app-status-pill [status]="enquiry.status" /></td>
+          <td>
+            <label class="visually-hidden" [attr.for]="'status-' + enquiry.enquiryId">
+              Status for {{ enquiry.referenceNo }}
+            </label>
+            <select
+              [id]="'status-' + enquiry.enquiryId"
+              [disabled]="savingId() === enquiry.enquiryId"
+              (change)="onStatusSelected(enquiry, $event)"
+            >
+              @for (status of statuses; track status.value) {
+                <option [value]="status.value" [selected]="status.value === enquiry.status">
+                  {{ status.label }}
+                </option>
+              }
+            </select>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="7" class="muted">No enquiries in this view.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

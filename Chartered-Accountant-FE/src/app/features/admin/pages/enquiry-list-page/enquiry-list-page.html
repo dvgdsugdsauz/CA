@@ -1,0 +1,74 @@
+<div class="section-head page-intro">
+  <h1>Enquiries</h1>
+  <p>Leads from the website, newest first.</p>
+</div>
+
+<app-status-filter
+  [counts]="counts()"
+  [total]="summary()?.total ?? 0"
+  [active]="activeStatus()"
+/>
+
+<form class="search" role="search" (submit)="$event.preventDefault(); applySearch(term.value)">
+  <label class="visually-hidden" for="enquiry-search">Search enquiries</label>
+  <input
+    #term
+    id="enquiry-search"
+    type="search"
+    placeholder="Name, email, phone, company or reference"
+    [value]="searchTerm()"
+  />
+  <button class="btn btn-ghost btn-sm" type="submit">Search</button>
+  @if (searchTerm()) {
+    <button class="btn btn-ghost btn-sm" type="button" (click)="applySearch('')">Clear</button>
+  }
+</form>
+
+@if (notice()) {
+  <div class="alert alert-error" role="alert">{{ notice() }}</div>
+}
+
+@let r = result();
+@if (r.state === 'loading') {
+  <p class="muted" aria-live="polite">Loading enquiries...</p>
+} @else if (r.state === 'error') {
+  <div class="alert alert-error" role="alert">
+    {{ r.message }}
+    <button class="btn btn-ghost btn-sm retry" type="button" (click)="retry()">Try again</button>
+  </div>
+} @else {
+  <app-enquiry-table
+    [enquiries]="r.page.content"
+    [savingId]="savingId()"
+    (statusChange)="changeStatus($event)"
+  />
+
+  @if (r.page.totalElements) {
+    <nav class="pager" aria-label="Pages">
+      <span class="muted">
+        {{ r.page.page * r.page.size + 1 }}–{{ r.page.page * r.page.size + r.page.content.length }}
+        of {{ r.page.totalElements }}
+      </span>
+      @if (r.page.page > 0) {
+        <a
+          class="btn btn-ghost btn-sm"
+          [routerLink]="[]"
+          [queryParams]="pageParams(-1)"
+          queryParamsHandling="merge"
+        >
+          Previous
+        </a>
+      }
+      @if (r.page.page + 1 < r.page.totalPages) {
+        <a
+          class="btn btn-ghost btn-sm"
+          [routerLink]="[]"
+          [queryParams]="pageParams(1)"
+          queryParamsHandling="merge"
+        >
+          Next
+        </a>
+      }
+    </nav>
+  }
+}

@@ -1,0 +1,20 @@
+<app-page-header
+  heading="Services"
+  lede="Audit, tax, GST, company law and finance support for companies, startups and individuals."
+  [breadcrumbs]="breadcrumbs"
+/>
+
+<section class="band">
+  <div class="wrap groups">
+    @for (group of groups(); track group.key) {
+      <section [attr.aria-labelledby]="'cat-' + group.key">
+        <h2 class="group-title" [id]="'cat-' + group.key">{{ group.name }}</h2>
+        <div class="service-grid">
+          @for (service of group.services; track service.serviceId) {
+            <app-service-card [service]="service" />
+          }
+        </div>
+      </section>
+    }
+  </div>
+</section>
